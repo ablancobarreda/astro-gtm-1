@@ -8,39 +8,71 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		
-		<!-- Google Tag Manager -->
-		<script type="text/partytown" is:inline>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Astro description" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+
+	<!-- Google Tag Manager -->
+	<script type="text/partytown">
 		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'/proxy?url=' + encodeURIComponent('https://www.googletagmanager.com/gtm.js?id='+i+dl);
-		f.parentNode.insertBefore(j,f);
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-K3BPTM9C');
-		</script>
-		<!-- End Google Tag Manager -->
-	</head>
-	<body>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3BPTM9C"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
-		<slot />
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			dataLayer.push({
-				event: 'testEvent',
-				testKey: 'testValue'
-			});
-		</script>
-	</body>
+	</script>
+	<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3BPTM9C"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<slot />
+<script is:inline>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'GTM-K3BPTM9C');
+
+	// Función para imprimir el dataLayer en la consola
+	function printDataLayer() {
+		console.log('Current dataLayer:', JSON.parse(JSON.stringify(window.dataLayer)));
+	}
+
+	// Imprimir el dataLayer inmediatamente
+	printDataLayer();
+
+	// Pushear un evento de pageView
+	gtag('event', 'pageView', {
+		'pageType': 'home',
+		'userStatus': 'guest'
+	});
+
+	// Imprimir el dataLayer después del pageView
+	printDataLayer();
+
+	// Ejemplo de un evento adicional para probar
+	setTimeout(() => {
+		gtag('event', 'testEvent', {
+			'testKey': 'testValue'
+		});
+		// Imprimir el dataLayer después del evento de prueba
+		printDataLayer();
+	}, 2000);
+
+	// Sobrescribir el método push del dataLayer
+	const originalPush = dataLayer.push;
+	dataLayer.push = function(...args) {
+		originalPush.apply(this, args);
+		console.log('dataLayer.push called with:', args);
+		printDataLayer();
+	};
+</script>
+</body>
 </html>
 <style is:global>
 	:root {
