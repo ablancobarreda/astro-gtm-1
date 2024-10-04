@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import partytown from '@astrojs/partytown';
 
+import netlify from '@astrojs/netlify';
+
 export default defineConfig({
   integrations: [
     partytown({
@@ -14,4 +16,7 @@ export default defineConfig({
       },
     }),
   ],
+
+  output: 'server',
+  adapter: netlify(),
 });
