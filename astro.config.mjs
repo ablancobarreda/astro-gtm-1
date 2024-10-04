@@ -9,8 +9,8 @@ export default defineConfig({
       config: {
         forward: ["dataLayer.push"],
         resolveUrl: (url) => {
-          const proxyUrl = new URL('https://coruscating-peony-1ea3c6.netlify.app/proxy');
-          proxyUrl.searchParams.append('url', url.href);
+          const proxyUrl = new URL('https://coruscating-peony-1ea3c6.netlify.app/');
+          proxyUrl.searchParams.append('apiurl', url.href);
           return proxyUrl;
         },
       },
