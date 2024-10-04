@@ -8,11 +8,11 @@ export default defineConfig({
     partytown({
       config: {
         forward: ["dataLayer.push"],
-        resolveUrl: (url) => {
-          const proxyUrl = new URL('https://coruscating-peony-1ea3c6.netlify.app/');
-          proxyUrl.searchParams.append('apiurl', url.href);
-          return proxyUrl;
-        },
+        // resolveUrl: (url) => {
+        //   const proxyUrl = new URL('https://coruscating-peony-1ea3c6.netlify.app/');
+        //   proxyUrl.searchParams.append('apiurl', url.href);
+        //   return proxyUrl;
+        // },
       },
     }),
   ],
