@@ -18,63 +18,63 @@ const { title } = Astro.props;
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<meta name="generator" content={Astro.generator} />
 	<title>{title}</title>
-	<script type="text/partytown" src="/trusterform.js" async is:inline></script>
+	<script type="text/javascript" src="/trusterform.js" async is:inline></script>
 	<!-- Google Tag Manager -->
-	<script type="text/partytown" is:inline>
-		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-N8BFWTQH');
-	</script>
+	<!--<script type="text/partytown" is:inline>-->
+	<!--	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':-->
+	<!--	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],-->
+	<!--	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=-->
+	<!--	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);-->
+	<!--	})(window,document,'script','dataLayer','GTM-N8BFWTQH');-->
+	<!--</script>-->
 	<!-- End Google Tag Manager -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8BFWTQH"
-				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8BFWTQH"-->
+<!--				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
 <!-- End Google Tag Manager (noscript) -->
 <slot />
-<script is:inline>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'GTM-N8BFWTQH');
+<!--<script is:inline>-->
+<!--	window.dataLayer = window.dataLayer || [];-->
+<!--	function gtag(){dataLayer.push(arguments);}-->
+<!--	gtag('js', new Date());-->
+<!--	gtag('config', 'GTM-N8BFWTQH');-->
 
-	// Función para imprimir el dataLayer en la consola
-	function printDataLayer() {
-		console.log('Current dataLayer:', JSON.parse(JSON.stringify(window.dataLayer)));
-	}
+<!--	// Función para imprimir el dataLayer en la consola-->
+<!--	function printDataLayer() {-->
+<!--		console.log('Current dataLayer:', JSON.parse(JSON.stringify(window.dataLayer)));-->
+<!--	}-->
 
-	// Imprimir el dataLayer inmediatamente
-	printDataLayer();
+<!--	// Imprimir el dataLayer inmediatamente-->
+<!--	printDataLayer();-->
 
-	// Pushear un evento de pageView
-	gtag('event', 'pageView', {
-		'pageType': 'home',
-		'userStatus': 'guest'
-	});
+<!--	// Pushear un evento de pageView-->
+<!--	gtag('event', 'pageView', {-->
+<!--		'pageType': 'home',-->
+<!--		'userStatus': 'guest'-->
+<!--	});-->
 
-	// Imprimir el dataLayer después del pageView
-	printDataLayer();
+<!--	// Imprimir el dataLayer después del pageView-->
+<!--	printDataLayer();-->
 
-	// Ejemplo de un evento adicional para probar
-	setTimeout(() => {
-		gtag('event', 'testEvent', {
-			'testKey': 'testValue'
-		});
-		// Imprimir el dataLayer después del evento de prueba
-		printDataLayer();
-	}, 2000);
+<!--	// Ejemplo de un evento adicional para probar-->
+<!--	setTimeout(() => {-->
+<!--		gtag('event', 'testEvent', {-->
+<!--			'testKey': 'testValue'-->
+<!--		});-->
+<!--		// Imprimir el dataLayer después del evento de prueba-->
+<!--		printDataLayer();-->
+<!--	}, 2000);-->
 
-	// Sobrescribir el método push del dataLayer
-	const originalPush = dataLayer.push;
-	dataLayer.push = function(...args) {
-		originalPush.apply(this, args);
-		console.log('dataLayer.push called with:', args);
-		printDataLayer();
-	};
-</script>
+<!--	// Sobrescribir el método push del dataLayer-->
+<!--	const originalPush = dataLayer.push;-->
+<!--	dataLayer.push = function(...args) {-->
+<!--		originalPush.apply(this, args);-->
+<!--		console.log('dataLayer.push called with:', args);-->
+<!--		printDataLayer();-->
+<!--	};-->
+<!--</script>-->
 </body>
 </html>
 <style is:global>
